@@ -64,8 +64,6 @@ window.info = {{info | safe}}
 window.env = info.env;
 window.hosts = info.hosts;
 window.groups = info.groups;
-window.envName=info.env.envName;
-window.stageName=info.env.stageName;
 window.showExistingCapacity = !window.info.is_pinterest || getUrlParameter("addexisting") || (hosts!=null && hosts.length>0)||(groups!=null && groups.length>0)
 const deployServiceWikiUrl = "{{conflicting_deploy_service_wiki_url}}";
 let clusterConfigs;
@@ -163,7 +161,7 @@ var alert = new Vue({
 
 <div id="mainPanel">
     {% if is_pinterest %}
-        {% include "clusters/cluster_capacity.tmpl" with is_managed_resource=is_managed_resource entitlements_ui_link=entitlements_ui_link useEntitlements=env.useEntitlements %}
+        {% include "clusters/cluster_capacity.tmpl" with is_managed_resource=is_managed_resource entitlements_ui_link=entitlements_ui_link useEntitlements=env.useEntitlements envName=env.envName stageName=env.stageName %}
     {% endif %}
     {% include "configs/capacity.tmpl" %}
 </div>
